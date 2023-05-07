@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products</title>
+    <script src="https://kit.fontawesome.com/43b779b2fa.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="home.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #screen {
+            width: 100%;
+            /* height: 1000px; */
+            /* border:1px solid red; */
+        }
+
+        #navbar1 {
+            height: 80px;
+            width: 100%;
+            /* border:1px solid blue; */
+            background-color: #f2e9e9;
+        }
+
+        #navbar1>div {
+            width: 85%;
+            height: 100%;
+            /* border:1px solid red; */
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #navbar1>div>div:nth-child(1) {
+            width: 10%;
+            height: 100%;
+            /* border:1px solid red; */
+        }
+
+        #navbar1>div>div:nth-child(1)>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #navbar1>div>div:nth-child(2) {
+            width: 60%;
+            height: 80%;
+            /* border:1px solid red; */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 5px;
+            background-color: white;
+        }
+
+        #navbar1>div>div:nth-child(2)>input {
+            width: 87%;
+            height: 90%;
+            padding: 10px;
+            border: none;
+        }
+
+        #navbar1>div>div:nth-child(2)>i {
+            width: 3%;
+            /* height:100%; */
+            /* border:1px solid green; */
+            font-size: 20px;
+            margin-right: 10px;
+            color: brown;
+            /* margin-bottom: 10px; */
+        }
+
+        #navbar1>div>div:nth-child(3) {
+            width: 25%;
+            height: 90%;
+            /* border:1px solid red; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #navbar1>div>div:nth-child(3)>div {
+            /* border:1px solid green; */
+            /* width:25%; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(172, 98, 98);
+        }
+
+        #navbar1>div>div:nth-child(3)>div:hover {
+            color: rgb(119, 22, 22);
+        }
+
+        #navbar1>div>div:nth-child(3)>div>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        #navbar1>div>div:nth-child(3)>div>div>i {
+            margin-bottom: 5px;
+        }
+
+        #hidenav {
+            height: 60px;
+            width: 100%;
+            /* border:1px solid red; */
+            display: none;
+        }
+
+        #navbar2 {
+            height: 25px;
+            width: 100%;
+            box-shadow: 5px 10px 18px rgb(248, 245, 245);
+            /* border:1px solid green; */
+        }
+
+        #navbar2>div {
+            width: 100%;
+            height: 100%;
+            /* border:1px solid red; */
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #navbar2>div>div {
+            /* border:1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        #navbar2>div>div>p {
+            font-size: 18px;
+            color: rgb(83, 82, 82);
+        }
+
+        #navbar2>div>div>p:hover {
+            color: brown;
+        }
+
+        .footer {
+            padding: 0 20px;
+            z-index: 10;
+            background: #f2e9e9;
+            /* background-color: #000; */
+            /* min-height: 298px; */
+            width: 100%;
+            color: #161313;
+            /* overflow: scroll; */
+        }
+
+        .footer-content {
+            width: 100%;
+            display: flex;
+            /* background-color: #000000; */
+            background: #f2e9e9;
+            justify-content: space-around;
+            max-width: 1200px;
+            min-width: 1200px;
+            margin: 0 auto;
+            padding: 76px 0;
+            height: 100%;
+        }
+
+        .points {
+            /* color: #808080; */
+            color: #A86769;
+            font-size: 15px;
+            font-weight: 600;
+            /*    border: 1px solid white;*/
+            width: 300px;
+            margin: 26px 0px 10px 15px;
+            /*    padding: 15px 0px 0px 0px;*/
+        }
+
+        .footer-li {
+            padding: 20px 10px 2px 0px;
+        }
+
+        .footer-ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-li a {
+            color: #080808;
+            font-size: 15px;
+            font-weight: 300;
+            text-decoration: none;
+        }
+
+        .footer-li a:hover {
+            font-weight: 600;
+        }
+
+        .points img {
+            /* border: 2px solid #808080; */
+            padding: 10px;
+            margin: 30px 0px 10px 57px;
+            border-radius: 10px;
+            transition: transform 0.5s;
+            display: flex;
+        }
+
+        .points img:hover {
+            transform: scale(1.06);
+            cursor: pointer;
+        }
+
+        @media screen and (max-width:1000px) {
+            #navbar1>div {
+                width: 100%;
+            }
+
+            #navbar1>div>div:nth-child(3)>div>div>i {
+                font-size: 30px;
+            }
+
+            #navbar1>div>div:nth-child(3)>div:nth-child(1)>div>p {
+                display: none;
+            }
+
+            #navbar1>div>div:nth-child(3)>div:nth-child(3)>div>p {
+                display: none;
+            }
+
+            #navbar1>div>div:nth-child(3)>div:nth-child(4)>div>p {
+                display: none;
+            }
+
+            #navbar1>div>div:nth-child(2) {
+                display: none;
+            }
+
+            #navbar1>div>div:nth-child(3) {
+                justify-content: right;
+                /* border:1px solid green; */
+            }
+
+            #navbar1>div>div:nth-child(3)>div {
+                /* border:1px solid red; */
+                width: 18%;
+            }
+
+            #navbar1>div>div:nth-child(3)>div:nth-child(2) {
+                display: none;
+            }
+
+            #hidenav {
+                display: block;
+                display: flex;
+                align-items: center;
+                background-color: #f2e9e9;
+            }
+
+            #hidenav>div {
+                width: 98%;
+                height: 80%;
+                /* border:1px solid red; */
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-left: 5px;
+                background-color: white;
+                margin: auto;
+            }
+
+            #hidenav>div>input {
+                width: 87%;
+                height: 90%;
+                padding: 10px;
+                border: none;
+            }
+
+            #hidenav>div>i {
+                width: 3%;
+                /* height:100%; */
+                /* border:1px solid green; */
+                font-size: 20px;
+                margin-right: 10px;
+                color: brown;
+                /* margin-bottom: 10px; */
+            }
+
+            #navbar2 {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="screen">
+        <div id="navbar1">
+            <div>
+                <div>
+                    <img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTQuODMgNzQuNzkiPjxkZWZzPjxzdHlsZT4uYntmaWxsOiM4MzI3Mjk7ZmlsbC1ydWxlOmV2ZW5vZGQ7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzguNzksNy41NWMtLjYyLTIuOTEsMS4zMi01LjU2LDQuMTUtNS41Nmg3Ljk1YzIuMTIsLjA5LDQuNzctMS41OSw0Ljc3LTEuNTlWMTMuNzNjMCwxMy41MS03LjQyLDE5LjI0LTEwLjg2LDE5Ljc3LS42MiwuMjctMS4wNiwuMDktLjI2LS41Myw0LjY4LTMsNy40Mi0xMC4xNSw3LjY4LTE2LjI0VjQuNTVjLS45NywuNjItMi44MiwuNzEtMi44MiwuNzFoLTYuOTdjLTEuODUsMC0yLjgyLC42Mi0zLjYyLDIuMjltMzUuNTgsMGMuNjItMi45MS0xLjI0LTUuNTYtNC4xNS01LjU2aC03Ljk1Yy0yLjAzLC4wOS00Ljc3LTEuNTktNC43Ny0xLjU5VjEzLjczYzAsMTMuNTEsNy40MiwxOS4yNCwxMC44NiwxOS43NywuNjIsLjI3LDEuMDYsLjA5LC4yNy0uNTMtNC42OC0zLTcuNDItMTAuMTUtNy42OC0xNi4yNFY0LjU1Yy45NywuNjIsMi44MiwuNzEsMi44MiwuNzFoNy4wNmMxLjg1LDAsMi44MywuNjIsMy41MywyLjI5aDBaTTIwLjI2LDYyLjk5Yy0uNzEtMS43Ny0uMTgtMy43MSwuMjYtNC40MWg4LjAzdjQuNDFoMi4wM3YtMTkuNTFzLS42Mi0uMDktMS4wNiwuNjJjLTMsNC43Ny01LjMsNi04LjY1LDkuMzYtMi44MywyLjgyLTQuOTQsNi0zLjg5LDkuNTNoMy4yN1ptLjg4LTUuNzRoNy40MnYtOC4zOWMtMS44NSwzLjQ0LTYuMjcsNS4zLTcuNDIsOC4zOVptODQuOTMtMTUuOGMtMi41NiwyLjAzLTQuNjgsMy44LTUuODMsNi40NC0xLjI0LDIuNjUtMS41OSw2LjQ0LDAsOS43MSwxLjc3LDMuNjIsMy44LDUuNTYsNi4xOCw3Ljk0LDEuNjgsMS44NSw0Ljg2LDUuNTYsMy44LDguODMsLjc5LDAsMS44NS0xLjk0LDIuMDMtMi42NSwuNDQtMi4yOSwuMTgtMy40NC0uNzktNS4xMi0uNjItMS4xNS0xLjk0LTIuMjktMi45MS0zLjQ0LDEuNDEtMS4xNSwyLjkxLTIuODMsNC4xNS00LjUsMS41OS0yLjIxLDIuNTYtNS45MSwuNTMtOS41My0xLjg1LTMuNDQtNy4wNi02LjYyLTcuMTUtNy42OGgwWm0xLjA2LDIwLjM5Yy0yLjAzLTEuNjgtMy4yNy0zLjA5LTQuNS01LjgzLTEuMjQtMi40Ny0xLjMyLTUuMzktLjc5LTcuNDIsLjYyLTIuMjEsMi4xMi0zLjgsMy41My00Ljk0LDEuNTksMS4xNSwzLjI3LDIuNTYsNC41LDQuNTksMi4wMywzLjQ0LDIuMDMsNS45MSwuNzEsOS4yNy0uNzksMS45NC0xLjY4LDMuMDktMy40NCw0LjMzaDBaTS41Nyw0NS4wN2MtLjM1LS43MSwuMTgtMi41NiwyLjMtMi4zOEgxMy4yOGMxLjMyLC4wOSwyLjEyLS44OCwzLjgtLjcxLTIuMzgsMS45NC0yLjY1LDIuOTEtMy4wOSw0Ljc3bC0xLjY4LDEzLjY4Yy0uNDQsNS41NiwxLjE1LDEwLjE1LDUuMywxMy45NS0yLjU2LC4zNS04LjEyLTMuNzEtOC4zLTExLjEyLS4xOC0zLjcxLC44OC0xNS41NCwuODgtMTUuNTQsLjI2LTEuOTQsMS41LTMuMzUsMS41LTMuMzVIMS44Yy0uNjIsLjA5LS45NywuMDktMS4yNCwuNzFILjU3Wm04MS44NCwxNy4zOWgyLjU2di01LjIxaDYuOTd2NS40N2gyLjY1di0xOC44OWgtMi42NXYxMS45MmgtNi45N3YtMTEuOTJoLTIuNTZ2MTguNjNoMFptLTcuMTUtMTQuMjFjLS42MiwuMTgtMS4yNC0uMDktMS44NS0uNjItLjg4LS43OS0xLjI0LTEuNTktMi4zOC0yLjI5LTEuMjQtLjYyLTMtLjcxLTQuMDYsLjA5LS45NywuNzEtLjk3LDIuMywuMDksMy4xOCwyLjAzLDEuNTksNC4yNCwyLjQ3LDYuOCwzLjgsNC42OCwyLjQ3LDUuNDcsNi44LDIuMjEsOS0yLjc0LDEuODUtNi4xOCwyLjAzLTkuMjcsLjg4LTIuMzgtLjk3LTQuMjQtMi45MS00LjUtNS4zLDEuNTksMCwyLjEyLC43MSwyLjc0LDEuNjgsLjk3LDEuMzIsMS41OSwxLjg1LDMsMi40NywyLjAzLC43OSw0LjMzLC41Myw1LjY1LS4yNiwxLjk0LTEuMjQsMS42OC0zLjI3LC4yNi00LjU5LTIuOTEtMi43NC02LjUzLTMuNTMtOC41Ni01LjU2LTEuNzctMS43Ny0yLjM4LTMuNzEtLjUzLTUuNzQsMS41OS0xLjY4LDUuODMtMi4yMSw4LjMtLjA5LDEuMDYsLjk3LDEuODUsMi4xMiwyLjEyLDMuMzVoMFptLTIxLjEtMTAuMDZjMC0xLjQxLDEuMDYtMi40NywyLjQ3LTIuNDcsMS4yNCwwLDIuMzgsMS4wNiwyLjM4LDIuNDcsMCwxLjMyLTEuMTUsMi40Ny0yLjM4LDIuNDctMS40MSwwLTIuNDctMS4xNS0yLjQ3LTIuNDdabTEuMTUsNS42NWgyLjQ3djE5LjE2aC0yLjQ3di0xOS4xNlptLTE5LjI1LDE5LjE2aDEuNzd2LTEzLjE1Yy44OCwyLjU2LDUuMjEsNS45Miw1LjIxLDUuOTIsMCwwLDMuMzUsMi44Myw0Ljk0LDYuNzFsMS4wNiwuNTN2LTE5LjE2aC0xLjc3djEzLjQyYy0uOTctMi41Ni00Ljc3LTUuNTYtNC43Ny01LjU2LTIuOTEtMi41Ni00Ljg2LTYuMDktNS4zLTcuNzdsLTEuMTUtLjM1djE5LjQyaDBaIi8+PC9zdmc+" />
+                </div>
+                <div class="nav">
+                    <input placeholder="Search for Gold Jwellery, Diamond Jwellery and more..." />
+                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-house"></i>
+                            <p>STORIES</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="switch">
+                            <i class="fa-regular fa-user"></i>
+                            <p>ACCOUNT</p>
+                        </div>
+                    </div>
+                    <div id="logout"></div>
+                    <div>
+                        <div>
+                            <i class="fa-regular fa-heart"></i>
+                            <p>WISHLIST</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p>CART</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="hidenav">
+            <div>
+                <input placeholder="Search for Gold Jwellery, Diamond Jwellery and more..." />
+                <i class="fa-solid fa-camera"></i>
+                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div id="navbar2">
+            <div>
+                <div>
+                    <p>ALL JWELLERY</p>
+                </div>
+                <div>
+                    <p>GOLD</p>
+                </div>
+                <div>
+                    <p>DIAMOND</p>
+                </div>
+                <div>
+                    <p>EARRINGS</p>
+                </div>
+                <div>
+                    <p>RINGS</p>
+                </div>
+                <div>
+                    <p>MIA</p>
+                </div>
+                <div>
+                    <p>COLLECTIONS</p>
+                </div>
+                <div>
+                    <p>RIVAAH</p>
+                </div>
+                <div>
+                    <p>GOLDEN HARVEST</p>
+                </div>
+                <div>
+                    <p>CORPORATE GIFTING</p>
+                </div>
+                <div>
+                    <p>MORE</p>
+                </div>
+            </div>
+        </div>
+        <div id="pic">
+            <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishqrt/17841f2c-71d7-42dd-b88a-12570af252a6/desktop/pip-desktopnew.jpg?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0T6206GQH590V3000-17841f2c-71d7-42dd-b88a-12570af252a6-desktop-oqlTASL&amp;impolicy=pqmed"
+                alt="">
+        </div>
+        <div id="products"></div>
+    </div>
+    
+    <script>
+        window.onload = function () {
+            // alert("working")
+            var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+            // console.log(currentUser,"current user");
+            if (!!currentUser) {
+                // alert(currenUser,"username")
+                var logoutDiv = document.getElementById("logout")
+                var divfromHtml = document.getElementById("switch");
+                // console.log(divfromHtml, "divfromhtml");
+                // var h1=document.createElement("h1");
+                
+                // divfromHtml.append(h1)
+                var button = '<button onclick="logout()">Logout</button>'
+                var name = `<h1>${currentUser.userName}</h1>`;
+                divfromHtml.innerHTML = name;
+                logoutDiv.innerHTML = button;
+            }
+            //  else {
+            //     alert("current user absent")
+            // }
+
+            var divToShowProducts = document.getElementById("products");
+            var finalData = "";
+
+            var productsFromLS = JSON.parse(localStorage.getItem("Products"))
+            for (var i = 0; i < productsFromLS.length; i++) {
+                finalData += `<div onclick='redirect(${JSON.stringify(productsFromLS[i])})' id='singlePro'><img src=${productsFromLS[i].proImage} /><h3>${productsFromLS[i].proName}</h3><p> ${productsFromLS[i].proPrice}</p></div>`;
+            }
+
+            // console.log(finalData, "finalData here")
+
+            divToShowProducts.innerHTML = finalData;
+
+        }
+        function redirect(product) {
+            var singleProduct = JSON.stringify(product);
+            // console.log(s, " s here")
+            alert("Working")
+            localStorage.setItem("current-product", singleProduct);
+            window.location.href = './singleProduct.html'
+        }
+
+        function logout() {
+            alert("Logout successful.")
+            localStorage.removeItem("currentUser")
+            window.location.reload()
+        }
+    </script>
+</body>
+
+</html>
