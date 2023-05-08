@@ -6,13 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Single Product</title>
+    <script src="https://kit.fontawesome.com/43b779b2fa.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="home.css" /> -->
     <script>
         window.onload = function () {
+             // alert("working")
+             var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+            // console.log(currentUser,"current user");
+            if (!!currentUser) {
+                // alert(currenUser,"username")
+                var logoutDiv = document.getElementById("logout")
+                var divfromHtml = document.getElementById("switch");
+                // console.log(divfromHtml, "divfromhtml");
+                // var h1=document.createElement("h1");
+                
+                // divfromHtml.append(h1)
+                // var button = '<button onclick="logout()">Logout</button>'
+                var button = '<span class="lgbtn-wrap"><i class="fa-solid fa-arrow-right-from-bracket id=logout-icon"></i> <button onclick="logout()" class="logout-button-txt">Logout</button></span>'
+                var name = `<h1>${currentUser.userName}</h1>`;
+                divfromHtml.innerHTML = name;
+                logoutDiv.innerHTML = button;
+            }
+            //  else {
+            //     alert("current user absent")
+            // }
+
+
             var product = JSON.parse(localStorage.getItem("current-product"));
 
             var divToAppendProduct = document.getElementById("singleProduct");
             var structure = `<div id='singlePro'> <img src='${product.proImage}' /> <br/> <h1>${product.proName}</h1><br/> <p>${product.proPrice}</p><br/> <button onclick='addCart(${JSON.stringify(product)})'>Add to cart</button> </div>`
             console.log(structure, "here");
+            
             divToAppendProduct.innerHTML = structure;
         }
         function addCart(product){
@@ -39,27 +64,808 @@
         }
     </script>
     <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #screen {
+            width: 100%;
+            /* height: 1000px; */
+            /* border:1px solid red; */
+        }
+
+        #navbar1 {
+            height: 80px;
+            width: 100%;
+            /* border:1px solid blue; */
+            background-color: #f2e9e9;
+            margin: 0;
+            /* position: fixed; */
+            top: 0;
+        }
+
+        #navbar1>div {
+            width: 85%;
+            height: 100%;
+            /* border:1px solid red; */
+            margin: auto;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #navbar1>div>div:nth-child(1) {
+            width: 10%;
+            height: 100%;
+            /* border:1px solid red; */
+        }
+
+        #navbar1>div>div:nth-child(1)>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #navbar1>div>div:nth-child(2) {
+            width: 60%;
+            height: 80%;
+            /* border:1px solid red; */
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-left: 5px;
+            background-color: white;
+        }
+
+        #navbar1>div>div:nth-child(2)>input {
+            width: 87%;
+            height: 90%;
+            padding: 10px;
+            border: none;
+        }
+
+        #navbar1>div>div:nth-child(2)>i {
+            width: 3%;
+            /* height:100%; */
+            /* border:1px solid green; */
+            font-size: 20px;
+            margin-right: 10px;
+            color: brown;
+            /* margin-bottom: 10px; */
+        }
+
+        #navbar1>div>div:nth-child(3) {
+            width: 25%;
+            height: 90%;
+            /* border:1px solid red; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #navbar1>div>div:nth-child(3)>div {
+            /* border:1px solid green; */
+            /* width:25%; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(172, 98, 98);
+        }
+
+        #navbar1>div>div:nth-child(3)>div:hover {
+            color: rgb(119, 22, 22);
+        }
+
+        #navbar1>div>div:nth-child(3)>div>div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        #navbar1>div>div:nth-child(3)>div>div>i {
+            margin-bottom: 5px;
+        }
+
+        #nav {
+            height: 60px;
+            width: 100%;
+            /* border:1px solid red; */
+            display: none;
+        }
+
+        #navbar2 {
+            height: 25px;
+            width: 100%;
+            box-shadow: 5px 10px 18px rgb(248, 245, 245);
+            /* border:1px solid green; */
+        }
+
+        #navbar2>div {
+            width: 100%;
+            height: 100%;
+            /* border:1px solid red; */
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        #navbar2>div>div {
+            /* border:1px solid red; */
+            display: flex;
+            align-items: center;
+        }
+
+        #navbar2>div>div>p {
+            font-size: 18px;
+            color: rgb(83, 82, 82);
+        }
+
+        #navbar2>div>div>p:hover {
+            color: brown;
+        }
+        #scr1 {
+            width: 90%;
+            height: 850px;
+            /* border:1px solid red; */
+            margin: auto;
+            display: flex;
+            /* border-bottom: 1px solid grey; */
+        }
+
+        #btn {
+            width: 30%;
+            height: 50px;
+            background-color: white;
+            border: 1px solid rgb(29, 27, 27);
+            border-radius: 10px;
+            font-size: 20px;
+            color: rgb(66, 65, 65);
+            border-bottom: 1px solid grey;
+            display: flex none;
+            float: right;
+
+        }
+
+        #btn>button {
+            border: none;
+            align-items: center;
+            margin: 20px;
+            color: #000;
+            font-weight: bold;
+            font-size: medium;
+        }
+
+        #left {
+            width: 50%;
+            /* height:500px; */
+            /* border:1px solid gold; */
+            display: flex;
+            flex-direction: column;
+        }
+
+        #left>p:nth-child(1) {
+            height: 80px;
+            /* border:1px solid red; */
+            padding-top: 30px;
+            font-size: 17px;
+        }
+
+        #left>p:nth-child(1)>span {
+            color: rgb(141, 36, 36);
+            font-weight: bold;
+        }
+
+        #left>div:nth-child(2) {
+            width: 100%;
+            height: 450px;
+            /* border:1px solid blue; */
+            display: flex;
+        }
+
+        /* #left>div:nth-child(2)>div:nth-child(1) {
+            width: 20%;
+            height: 100%;
+            border:1px solid red;
+        } */
+
+        #left>div:nth-child(2)>div:nth-child(2) {
+            width: 80%;
+            height: 100%;
+            /* border:1px solid red; */
+            display: flex;
+            justify-content: right;
+        }
+
+        #left>div:nth-child(2)>div:nth-child(2)>div {
+            width: 85%;
+            height: 100%;
+            /* border:1px solid blue; */
+        }
+
+        #left>div:nth-child(2)>div:nth-child(2)>div>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #left>div:nth-child(2)>div:nth-child(1)>div {
+            width: 100%;
+            height: 27%;
+            border: 1px solid brown;
+            margin-bottom: 40px;
+        }
+
+        #left>div:nth-child(2)>div:nth-child(1)>div>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #right {
+            width: 50%;
+            /* height:800px; */
+            /* border:1px solid gold; */
+            display: flex;
+            justify-content: center;
+        }
+
+        #right>div {
+            height: 800px;
+            width: 80%;
+            /* border:1px solid red; */
+        }
+
+        #first {
+            height: 110px;
+            width: 100%;
+            /* border:1px solid green; */
+            padding-top: 20px;
+            border-bottom: 1px solid rgb(221, 218, 218);
+        }
+
+        #first>p:nth-child(2) {
+            margin-top: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        #first>p:nth-child(3) {
+            color: rgb(79, 77, 77);
+            margin-bottom: 10px;
+        }
+
+        #second {
+            width: 100%;
+            /* border:1px solid purple; */
+            border-bottom: 1px solid rgb(205, 202, 202);
+        }
+
+        #second1 {
+            margin-top: 5px;
+            font-size: 16px;
+            color: rgb(69, 68, 68);
+            margin-bottom: 15px;
+        }
+
+        #second2 {
+            height: 70px;
+            width: 100%;
+            /* border:1px solid red; */
+        }
+
+        #second2>p:nth-child(1) {
+            font-weight: bold;
+        }
+
+        #second2>p:nth-child(1)>span {
+            font-size: 25px;
+        }
+
+        #second2>p:nth-child(2)>span {
+            color: brown
+        }
+
+        #second3 {
+            /* height:100px; */
+            width: 100%;
+            /* border:1px solid red; */
+        }
+
+        #second3>div {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #second3>div>div {
+            height: 70px;
+            width: 30%;
+            /* border:1px solid red; */
+        }
+
+        #second3>div>div>p {
+            font-weight: bold;
+            font-size: 17px;
+            color: rgb(35, 34, 34);
+        }
+
+        #second3>div>div>button {
+            width: 100%;
+            height: 45px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+            font-weight: bold;
+            font-size: 15px;
+            background-color: white;
+        }
+
+        #second3>div>div:nth-child(3)>p:nth-child(1) {
+            text-align: center;
+        }
+
+        #second3>div>div:nth-child(3)>p:nth-child(2) {
+            display: flex;
+            justify-content: space-between;
+            /* border: 1px solid green; */
+            width: 80%;
+            height: 30px;
+            font-size: 25px;
+            margin-top: 10px;
+        }
+
+        #second3>div>div:nth-child(3) {
+            display: flex;
+            /* justify-content: center; */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #second3>div>div:nth-child(3)>p:nth-child(2)>span {
+            font-size: 30px;
+            color: rgb(196, 192, 192);
+        }
+
+        #second3>p {
+            margin-top: 5px;
+        }
+
+        #second3>p>span {
+            color: brown;
+        }
+
+        #second4 {
+            height: 50px;
+            width: 100%;
+            /* border:1px solid blue; */
+            margin-top: 10px;
+        }
+
+        #second4>p:nth-child(1) {
+            font-weight: bold;
+        }
+
+        #second4>p:nth-child(2)>span {
+            color: brown;
+        }
+
+        #second5 {
+            height: 80px;
+            width: 100%;
+            /* border:1px solid green; */
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #second5>button {
+            width: 47%;
+            height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #second5>button:nth-child(1) {
+            background-color: white;
+            border: 1px solid black;
+        }
+
+        #second5>button:nth-child(2) {
+            background-color: #832729;
+            border: none;
+            color: white;
+        }
+
+        #third {
+            /* height:80px; */
+            width: 100%;
+            /* border:1px solid grey; */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 22px;
+            border-bottom: 1px solid rgb(201, 199, 199);
+        }
+
+        #third>div {
+            height: 24px;
+            width: 45%;
+            border: 1px solid grey;
+            padding: 10px;
+            border-radius: 6px;
+            padding-bottom: 5px;
+        }
+
+        #third>div:nth-child(1) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #third>div:nth-child(2) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #third>div:nth-child(2)>p:nth-child(1)>span {
+            margin-right: 5px;
+        }
+
+        #fourth {
+            /* height:400px; */
+            width: 100%;
+            /* border:1px solid red; */
+            font-size: small;
+        }
+
+        #fourth1 {
+            display: flex;
+        }
+
+        #fourth1>div:nth-child(1)>img {
+            width: 30px;
+            height: 40px;
+            /* margin-bottom: 10px; */
+        }
+
+        #fourth1>div:nth-child(2) {
+            margin-top: 10px;
+            margin-left: 10px;
+        }
+
+        #fourth2 {
+            display: flex;
+        }
+
+        #fourth2>div:nth-child(1)>img {
+            width: 30px;
+            height: 40px;
+            /* margin-bottom: 10px; */
+        }
+
+        #fourth2>div:nth-child(2) {
+            /* margin-top: 10px; */
+            margin-left: 10px;
+        }
+
+        #fourth3 {
+            display: flex;
+        }
+
+        #fourth3>div:nth-child(1)>img {
+            width: 30px;
+            height: 40px;
+            /* margin-bottom: 10px; */
+        }
+
+        #fourth3>div:nth-child(2) {
+            /* margin-top: 10px; */
+            margin-left: 10px;
+        }
+
+        /* #right4>div:nth-child(1) {
+            height: 80px;
+            width: 100%;
+            border:1px solid green;
+            padding-top: 5px;
+        }
+
+        #right4>div:nth-child(1)>p {
+            font-size: 15px;
+            color: rgb(69, 68, 68);
+            margin-bottom: 3px;
+        } */
+
+        #Fifth {
+            height: 160px;
+            width: 100%;
+            font-size: small;
+            /* border: 1px solid rgb(16, 16, 17); */
+            border-bottom: 1px solid rgb(165, 156, 156);
+
+        }
+
+        #Fifth>p:nth-child(1) {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        #Fifth>p:nth-child(2) {
+            font-size: 15px;
+            color: rgb(95, 95, 95);
+            margin-bottom: 15px;
+        }
+
+        #Fifth>button {
+            width: 100%;
+            height: 50px;
+            background-color: white;
+            border: 1px solid rgb(29, 27, 27);
+            border-radius: 10px;
+            font-size: 20px;
+            color: rgb(66, 65, 65);
+
+        }
+
         #singleProduct {
             width: 100%;
         }
 
         #singlePro {
-            border: 1px solid black;
-            width: 30%;
+            /* border: 1px solid black; */
+            width: 90%;
             /* height: 600px; */
             margin: auto;
             text-align: center;
+            border: 1px solid grey;
+            box-shadow: 5px 10px 18px rgb(248, 245, 245);
+            border-radius: 7px;
         }
 
         #singlePro>img {
             width: 100%;
             height: 350px;
+            /* border: 1px solid grey; */
+           
+        }
+        #singlePro>button{
+            border: 1px solid grey;
+            width: 20%;
+            height: 40px;
+            border-radius: 7px;
+            background-color: antiquewhite;
         }
     </style>
 </head>
 
 <body>
-    <div id="singleProduct"></div>
+    <div id="screen">
+        <div id="navbar1">
+            <div>
+                <div>
+                    <img
+                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz48c3ZnIGlkPSJhIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMTQuODMgNzQuNzkiPjxkZWZzPjxzdHlsZT4uYntmaWxsOiM4MzI3Mjk7ZmlsbC1ydWxlOmV2ZW5vZGQ7fTwvc3R5bGU+PC9kZWZzPjxwYXRoIGNsYXNzPSJiIiBkPSJNMzguNzksNy41NWMtLjYyLTIuOTEsMS4zMi01LjU2LDQuMTUtNS41Nmg3Ljk1YzIuMTIsLjA5LDQuNzctMS41OSw0Ljc3LTEuNTlWMTMuNzNjMCwxMy41MS03LjQyLDE5LjI0LTEwLjg2LDE5Ljc3LS42MiwuMjctMS4wNiwuMDktLjI2LS41Myw0LjY4LTMsNy40Mi0xMC4xNSw3LjY4LTE2LjI0VjQuNTVjLS45NywuNjItMi44MiwuNzEtMi44MiwuNzFoLTYuOTdjLTEuODUsMC0yLjgyLC42Mi0zLjYyLDIuMjltMzUuNTgsMGMuNjItMi45MS0xLjI0LTUuNTYtNC4xNS01LjU2aC03Ljk1Yy0yLjAzLC4wOS00Ljc3LTEuNTktNC43Ny0xLjU5VjEzLjczYzAsMTMuNTEsNy40MiwxOS4yNCwxMC44NiwxOS43NywuNjIsLjI3LDEuMDYsLjA5LC4yNy0uNTMtNC42OC0zLTcuNDItMTAuMTUtNy42OC0xNi4yNFY0LjU1Yy45NywuNjIsMi44MiwuNzEsMi44MiwuNzFoNy4wNmMxLjg1LDAsMi44MywuNjIsMy41MywyLjI5aDBaTTIwLjI2LDYyLjk5Yy0uNzEtMS43Ny0uMTgtMy43MSwuMjYtNC40MWg4LjAzdjQuNDFoMi4wM3YtMTkuNTFzLS42Mi0uMDktMS4wNiwuNjJjLTMsNC43Ny01LjMsNi04LjY1LDkuMzYtMi44MywyLjgyLTQuOTQsNi0zLjg5LDkuNTNoMy4yN1ptLjg4LTUuNzRoNy40MnYtOC4zOWMtMS44NSwzLjQ0LTYuMjcsNS4zLTcuNDIsOC4zOVptODQuOTMtMTUuOGMtMi41NiwyLjAzLTQuNjgsMy44LTUuODMsNi40NC0xLjI0LDIuNjUtMS41OSw2LjQ0LDAsOS43MSwxLjc3LDMuNjIsMy44LDUuNTYsNi4xOCw3Ljk0LDEuNjgsMS44NSw0Ljg2LDUuNTYsMy44LDguODMsLjc5LDAsMS44NS0xLjk0LDIuMDMtMi42NSwuNDQtMi4yOSwuMTgtMy40NC0uNzktNS4xMi0uNjItMS4xNS0xLjk0LTIuMjktMi45MS0zLjQ0LDEuNDEtMS4xNSwyLjkxLTIuODMsNC4xNS00LjUsMS41OS0yLjIxLDIuNTYtNS45MSwuNTMtOS41My0xLjg1LTMuNDQtNy4wNi02LjYyLTcuMTUtNy42OGgwWm0xLjA2LDIwLjM5Yy0yLjAzLTEuNjgtMy4yNy0zLjA5LTQuNS01LjgzLTEuMjQtMi40Ny0xLjMyLTUuMzktLjc5LTcuNDIsLjYyLTIuMjEsMi4xMi0zLjgsMy41My00Ljk0LDEuNTksMS4xNSwzLjI3LDIuNTYsNC41LDQuNTksMi4wMywzLjQ0LDIuMDMsNS45MSwuNzEsOS4yNy0uNzksMS45NC0xLjY4LDMuMDktMy40NCw0LjMzaDBaTS41Nyw0NS4wN2MtLjM1LS43MSwuMTgtMi41NiwyLjMtMi4zOEgxMy4yOGMxLjMyLC4wOSwyLjEyLS44OCwzLjgtLjcxLTIuMzgsMS45NC0yLjY1LDIuOTEtMy4wOSw0Ljc3bC0xLjY4LDEzLjY4Yy0uNDQsNS41NiwxLjE1LDEwLjE1LDUuMywxMy45NS0yLjU2LC4zNS04LjEyLTMuNzEtOC4zLTExLjEyLS4xOC0zLjcxLC44OC0xNS41NCwuODgtMTUuNTQsLjI2LTEuOTQsMS41LTMuMzUsMS41LTMuMzVIMS44Yy0uNjIsLjA5LS45NywuMDktMS4yNCwuNzFILjU3Wm04MS44NCwxNy4zOWgyLjU2di01LjIxaDYuOTd2NS40N2gyLjY1di0xOC44OWgtMi42NXYxMS45MmgtNi45N3YtMTEuOTJoLTIuNTZ2MTguNjNoMFptLTcuMTUtMTQuMjFjLS42MiwuMTgtMS4yNC0uMDktMS44NS0uNjItLjg4LS43OS0xLjI0LTEuNTktMi4zOC0yLjI5LTEuMjQtLjYyLTMtLjcxLTQuMDYsLjA5LS45NywuNzEtLjk3LDIuMywuMDksMy4xOCwyLjAzLDEuNTksNC4yNCwyLjQ3LDYuOCwzLjgsNC42OCwyLjQ3LDUuNDcsNi44LDIuMjEsOS0yLjc0LDEuODUtNi4xOCwyLjAzLTkuMjcsLjg4LTIuMzgtLjk3LTQuMjQtMi45MS00LjUtNS4zLDEuNTksMCwyLjEyLC43MSwyLjc0LDEuNjgsLjk3LDEuMzIsMS41OSwxLjg1LDMsMi40NywyLjAzLC43OSw0LjMzLC41Myw1LjY1LS4yNiwxLjk0LTEuMjQsMS42OC0zLjI3LC4yNi00LjU5LTIuOTEtMi43NC02LjUzLTMuNTMtOC41Ni01LjU2LTEuNzctMS43Ny0yLjM4LTMuNzEtLjUzLTUuNzQsMS41OS0xLjY4LDUuODMtMi4yMSw4LjMtLjA5LDEuMDYsLjk3LDEuODUsMi4xMiwyLjEyLDMuMzVoMFptLTIxLjEtMTAuMDZjMC0xLjQxLDEuMDYtMi40NywyLjQ3LTIuNDcsMS4yNCwwLDIuMzgsMS4wNiwyLjM4LDIuNDcsMCwxLjMyLTEuMTUsMi40Ny0yLjM4LDIuNDctMS40MSwwLTIuNDctMS4xNS0yLjQ3LTIuNDdabTEuMTUsNS42NWgyLjQ3djE5LjE2aC0yLjQ3di0xOS4xNlptLTE5LjI1LDE5LjE2aDEuNzd2LTEzLjE1Yy44OCwyLjU2LDUuMjEsNS45Miw1LjIxLDUuOTIsMCwwLDMuMzUsMi44Myw0Ljk0LDYuNzFsMS4wNiwuNTN2LTE5LjE2aC0xLjc3djEzLjQyYy0uOTctMi41Ni00Ljc3LTUuNTYtNC43Ny01LjU2LTIuOTEtMi41Ni00Ljg2LTYuMDktNS4zLTcuNzdsLTEuMTUtLjM1djE5LjQyaDBaIi8+PC9zdmc+" />
+                </div>
+                <div class="nav">
+                    <input placeholder="Search for Gold Jwellery, Diamond Jwellery and more..." />
+                    <i class="fa-solid fa-camera"></i>
+                    <i class="fa-solid fa-microphone"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-house"></i>
+                            <p>STORIES</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div id="switch">
+                            <i class="fa-regular fa-user"></i>
+                            <p>ACCOUNT</p>
+                        </div>
+                    </div>
+                    <div id="logout"></div>
+                    <div>
+                        <div>
+                            <i class="fa-regular fa-heart"></i>
+                            <p>WISHLIST</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p>CART</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="nav">
+            <div>
+                <input placeholder="Search for Gold Jwellery, Diamond Jwellery and more..." />
+                <i class="fa-solid fa-camera"></i>
+                <i class="fa-solid fa-microphone"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+        <div id="navbar2">
+            <div>
+                <div>
+                    <p>ALL JWELLERY</p>
+                </div>
+                <div>
+                    <p>GOLD</p>
+                </div>
+                <div>
+                    <p>DIAMOND</p>
+                </div>
+                <div>
+                    <p>EARRINGS</p>
+                </div>
+                <div>
+                    <p>RINGS</p>
+                </div>
+                <div>
+                    <p>MIA</p>
+                </div>
+                <div>
+                    <p>COLLECTIONS</p>
+                </div>
+                <div>
+                    <p>RIVAAH</p>
+                </div>
+                <div>
+                    <p>GOLDEN HARVEST</p>
+                </div>
+                <div>
+                    <p>CORPORATE GIFTING</p>
+                </div>
+                <div>
+                    <p>MORE</p>
+                </div>
+            </div>
+        </div>
+        <div id="scr1">
+            <div id="left">
+                <p>Home | diamond finger rings | <span>springtime dainty diamond ring</span></p>
+                <div id="singleProduct"></div>
+                <!-- <div>
+                    <div>
+                        <div>
+                            <img src="https://staticimg.titan.co.in/Tanishq/Catalog/502993FFSAA10_1.jpg" />
+                        </div>
+                        <div>
+                            <img src="https://staticimg.titan.co.in/Tanishq/Catalog/502993FFSAA10_2.jpg" />
+                        </div>
+                        <div>
+                            <img src="https://staticimg.titan.co.in/Tanishq/Catalog/502993FFSAA10_3.jpg" />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <img src="https://staticimg.titan.co.in/Tanishq/Catalog/502993FFSAA10_1.jpg" />
+                            <div id="btn">
+                                <button>Try It On</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> -->
+            </div>
+            <div id="right">
+                <div>
+                    <div id="first">
+                        <p>502993FFSLAA102JA000010</p>
+                        <p>Springtime Dainty Diamond Ring</p>
+                        <p><span><i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i></span><small> Write a review</small></p>
+                    </div>
+                    <div id="second">
+                        <div id="second1">
+                            <p><small>
+                                    Be a charming presence when you adorn this simple ring crafted in 18 karat rose
+                                    gold, studded with diamonds. Stone Quality: I1</small></p>
+                        </div>
+                        <div id="second2">
+                            <p>Price <span>
+                                    ₹
+                                    21 999.00</span></p>
+                            <p><small>Price inclusive of all taxes.See full </small><span><small>Price
+                                        Breakup</small></span></p>
+                        </div>
+                        <div id="second3">
+                            <div>
+                                <div>
+                                    <p>Size</p>
+                                    <button>16.40 mm</button>
+                                </div>
+                                <div>
+                                    <p>Gross Weight</p>
+                                    <button>1.559 g</button>
+                                </div>
+                                <div>
+                                    <p>Qty</p>
+                                    <p><span><i class="fa-solid fa-circle-minus"></i></span>1N<span><i
+                                                class="fa-solid fa-circle-plus"></i></span></p>
+                                </div>
+                            </div>
+                            <p><small>Weight will increase as per the Size. Check</small> <span><small>Sizing
+                                        comparison</small></span></p>
+                        </div>
+                        <div id="second4">
+                            <p><small>Gold Purity : 18.00 Karat</small></p>
+                            <p><small>Not sure what to buy? Checkout our</small> <span><small>Buying
+                                        Guides</small></span></p>
+                        </div>
+                        <div id="second5">
+                            <button>Add To Cart</button>
+                            <button>Buy Now</button>
+                        </div>
+                    </div>
+                    <div id="third">
+                        <div>
+                            <p>India</p>
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                        <div>
+                            <p><span><i class="fa-solid fa-location-dot"></i></span>Pincode</p>
+                            <p>Check</p>
+                        </div>
+                    </div>
+                    <div id="fourth">
+                        <div>
+                            <div id="fourth1">
+                                <div>
+                                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishqrt/1018d041-8048-466a-9cbd-4175282d71a9/18.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0T6206GQH590V3000-1018d041-8048-466a-9cbd-4175282d71a9-o8Bg5hY"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <p>Purity Guarranted</p>
+                                </div>
+                            </div>
+                            <div id="fourth2">
+                                <div>
+                                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishqrt/52d69400-d953-466a-8976-3e71e438f40c/19.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0T6206GQH590V3000-52d69400-d953-466a-8976-3e71e438f40c-o8BgeIR"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <p>Easy Returns</p>
+                                </div>
+                            </div>
+                            <div id="fourth3">
+                                <div>
+                                    <img src="https://www.tanishq.co.in/wps/wcm/connect/tanishqrt/c99d35eb-6c32-429b-a2b2-84966bced2f5/20.svg?MOD=AJPERES&CACHEID=ROOTWORKSPACE.Z18_90IA1H80O0T6206GQH590V3000-c99d35eb-6c32-429b-a2b2-84966bced2f5-o8Bgj5d"
+                                        alt="">
+                                </div>
+                                <div>
+                                    <p>Free Shipping across India</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                    <div id="Fifth">
+                        <p>Still Confused What to Buy?</p>
+                        <p>Get on live video call with our design experts, or visit your nearest Tanishq store to
+                            get an closer look and know more about the product.</p>
+                        <button>Talk to an Expert</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    <!-- <div id="singleProduct"></div> -->
 
 </body>
 
