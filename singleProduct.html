@@ -11,7 +11,7 @@
     <script>
         window.onload = function () {
              // alert("working")
-             var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+             var currentUser = JSON.parse(localStorage.getItem("TanishqCurrentUser"))
             // console.log(currentUser,"current user");
             if (!!currentUser) {
                 // alert(currenUser,"username")
@@ -42,8 +42,8 @@
         }
         function addCart(product){
             alert("Adding to cart")
-            var currentUser=JSON.parse(localStorage.getItem("currentUser"));
-            var userData=JSON.parse(localStorage.getItem("Users"));
+            var currentUser=JSON.parse(localStorage.getItem("TanishqCurrentUser"));
+            var userData=JSON.parse(localStorage.getItem("TanishqUsers"));
             var flagforUser=false;
             for(var i=0;i<userData.length;i++){
                 if(currentUser.userEmail===userData[i].userEmail)
@@ -60,8 +60,17 @@
                     window.location.href='./Cart.html'
                 }
             }
-            localStorage.setItem("Users",JSON.stringify(userData));
+            localStorage.setItem("TanishqUsers",JSON.stringify(userData));
         }
+
+        function logout() {
+            alert("Logout successful.")
+            localStorage.removeItem("TanishqCurrentUser")
+            window.location.reload()
+
+
+        }
+
     </script>
     <style>
          * {

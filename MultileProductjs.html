@@ -748,7 +748,7 @@
         <script>
             window.onload = function () {
                 // alert("working")
-                var currentUser = JSON.parse(localStorage.getItem("currentUser"))
+                var currentUser = JSON.parse(localStorage.getItem("TanishqCurrentUser"))
                 // console.log(currentUser,"current user");
                 if (!!currentUser) {
                     // alert(currenUser,"username")
@@ -784,7 +784,7 @@
             }
             function logout() {
                 alert("Logout successful.")
-                localStorage.removeItem("currentUser")
+                localStorage.removeItem("TanishqCurrentUser")
                 window.location.reload()
             }
         </script>

@@ -15,7 +15,7 @@ function register(event) {
 
             if (password == confirmpassword) {
 
-                var Ls = JSON.parse(localStorage.getItem("Users")) || []
+                var Ls = JSON.parse(localStorage.getItem("TanishqUsers")) || []
                 var flag = false;
                 for (var i = 0; i < Ls.length; i++) {
                     if (Ls[i].userEmail == email) {
@@ -30,9 +30,9 @@ function register(event) {
                         userConfirmPassword: confirmpassword
                     }
                     Ls.push(userdata);
-                    localStorage.setItem("Users", JSON.stringify(Ls))
+                    localStorage.setItem("TanishqUsers", JSON.stringify(Ls))
                     alert("Registration Successful")
-                    window.location.href="login.html"
+                    window.location.href="./login.html"
                     document.getElementById("username").value = ""
                     document.getElementById("useremail").value = ""
                     document.getElementById("userpassword").value = ""
@@ -116,7 +116,7 @@ function login(event) {
     var userEmail = document.getElementById("useremail").value;
     var userPassword = document.getElementById("userpassword").value;
 
-    var Ls = JSON.parse(localStorage.getItem("Users"));
+    var Ls = JSON.parse(localStorage.getItem("TanishqUsers"));
 
     var currentUser;
     var flag = false;
@@ -127,7 +127,7 @@ function login(event) {
         }
     }
     if (flag == true) {
-        localStorage.setItem("currentUser", JSON.stringify(currentUser))
+        localStorage.setItem("TanishqCurrentUser", JSON.stringify(currentUser))
         window.location.href='./homejs.html';
         alert("login successfull")
     }
@@ -136,4 +136,13 @@ function login(event) {
     }
 
 }
+
+function logout() {
+    alert("Logout successful.")
+    localStorage.removeItem("TanishqCurrentUser")
+    window.location.reload()
+
+
+}
+
 
