@@ -128,7 +128,7 @@ function login(event) {
     }
     if (flag == true) {
         localStorage.setItem("TanishqCurrentUser", JSON.stringify(currentUser))
-        window.location.href='./homejs.html';
+        window.location.href='./MultipleProductjs.html';
         alert("login successfull")
     }
     else {
