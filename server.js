@@ -18,7 +18,8 @@ function register(event) {
                 var Ls = JSON.parse(localStorage.getItem("TanishqUsers")) || []
                 var flag = false;
                 for (var i = 0; i < Ls.length; i++) {
-                    if (Ls[i].userEmail == email) {
+                    if (Ls[i].userEmail == email)
+                    {
                         flag = true;
                     }
                 }
@@ -26,30 +27,35 @@ function register(event) {
                     var userdata = {
                         userName: name,
                         userEmail: email,
-                        userPassword: password, 
+                        userPassword: password,
                         userConfirmPassword: confirmpassword
+
                     }
                     Ls.push(userdata);
                     localStorage.setItem("TanishqUsers", JSON.stringify(Ls))
                     alert("Registration Successful")
-                    window.location.href="./login.html"
+                    window.location.href = "./login.html"
                     document.getElementById("username").value = ""
                     document.getElementById("useremail").value = ""
                     document.getElementById("userpassword").value = ""
                     document.getElementById("userconfirmpassword").value = ""
                 }
                 else {
-                    alert("Email aleready exist")
+                    alert("Email aleready exist");
                 }
             }
+
             else {
                 alert("password not match");
             }
 
-        } else {
+        }
+        else 
+        {
             alert("password should  include 8 or more characters");
         }
-    } else {
+    }
+    else {
         alert("please fill all fields");
     }
 
@@ -69,7 +75,7 @@ function register(event) {
 
 
 
-// now store data in ls
+// now store data in 1s
 // localStorage.setItem("Users", JSON.stringify(userdata))
 // JSON.stringify;           //  convert object into string
 // JSON.parse();            // convert json into object
@@ -123,24 +129,24 @@ function login(event) {
     for (var i = 0; i < Ls.length; i++) {
         if (Ls[i].userEmail == userEmail && Ls[i].userPassword == userPassword) {
             flag = true;
-            currentUser=Ls[i];
+            currentUser = Ls[i];
         }
     }
     if (flag == true) {
         localStorage.setItem("TanishqCurrentUser", JSON.stringify(currentUser))
-        window.location.href='./MultipleProductjs.html';
-        alert("login successfull")
+        window.location.href = './MultipleProductjs.html';
+        alert("login successfull");
     }
     else {
-        alert("Credintails not matched")
+        alert("Credintails not matched");
     }
 
 }
 
 function logout() {
-    alert("Logout successful.")
-    localStorage.removeItem("TanishqCurrentUser")
-    window.location.reload()
+    alert("Logout successful.");
+    localStorage.removeItem("TanishqCurrentUser");
+    window.location.reload();
 
 
 }
