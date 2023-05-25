@@ -26,7 +26,7 @@ function register(event) {
                     var userdata = {
                         userName: name,
                         userEmail: email,
-                        userPassword: password,
+                        userPassword: password, 
                         userConfirmPassword: confirmpassword
                     }
                     Ls.push(userdata);
