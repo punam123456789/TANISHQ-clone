@@ -245,7 +245,8 @@
     <h1>Your cart</h1>
     <div id="products"></div>
     <script>
-        window.onload = function(){
+        window.onload = function()
+        {
              // alert("working")
 
              var currentUser = JSON.parse(localStorage.getItem("TanishqCurrentUser"))
@@ -255,7 +256,7 @@
                 var logoutDiv = document.getElementById("logout")
                 var divfromHtml = document.getElementById("switch");
                 // console.log(divfromHtml, "divfromhtml");
-              
+               
                 // h1.innerText="Punam"
                 // divfromHtml.append(h1)
 
@@ -277,7 +278,8 @@
             var divToAppendProducts = document.getElementById("products");
             var products;
             for(var i=0;i<userData.length;i++){
-                if(currentUser.userEmail == userData[i].userEmail){
+                if(currentUser.userEmail == userData[i].userEmail)
+                {
                     products = userData[i].cartProducts;
                     
                 }
@@ -285,13 +287,15 @@
             }
             console.log(products,"products here")
             var finalData = ""
-            for(var i=0;i<products.length;i++){
+            for(var i=0;i<products.length;i++)
+            {
                 finalData +=  `<div><img src='${products[i].proImage}' /> <br/> <h1>${products[i].proName}</h1><br/> <p>${products[i].proPrice}</p></div>`
             }
             // console.log(finalData,"finalData");
             divToAppendProducts.innerHTML = finalData;
         }
-        function logout() {
+        function logout() 
+        {
             alert("Logout successful.")
             localStorage.removeItem("TanishqCurrentUser")
             window.location.reload()

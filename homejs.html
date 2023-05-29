@@ -434,8 +434,9 @@
     </div>
     
     <script>
-        window.onload = function () {
-            // alert("working")
+        window.onload = function () 
+        {
+            alert("working");
             var currentUser = JSON.parse(localStorage.getItem("currentUser"))
             // console.log(currentUser,"current user");
             if (!!currentUser) {
@@ -444,8 +445,7 @@
                 var divfromHtml = document.getElementById("switch");
                 // console.log(divfromHtml, "divfromhtml");
                 // var h1=document.createElement("h1");
-                
-                // divfromHtml.append(h1)
+                // divfromHtml.append(h1);
                 var button = '<button onclick="logout()">Logout</button>'
                 var name = `<h1>${currentUser.userName}</h1>`;
                 divfromHtml.innerHTML = name;
@@ -457,7 +457,6 @@
 
             var divToShowProducts = document.getElementById("products");
             var finalData = "";
-
             var productsFromLS = JSON.parse(localStorage.getItem("Products"))
             for (var i = 0; i < productsFromLS.length; i++) {
                 finalData += `<div onclick='redirect(${JSON.stringify(productsFromLS[i])})' id='singlePro'><img src=${productsFromLS[i].proImage} /><h3>${productsFromLS[i].proName}</h3><p> ${productsFromLS[i].proPrice}</p></div>`;
@@ -468,7 +467,8 @@
             divToShowProducts.innerHTML = finalData;
 
         }
-        function redirect(product) {
+        function redirect(product) 
+        {
             var singleProduct = JSON.stringify(product);
             // console.log(s, " s here")
             alert("Working")
@@ -476,11 +476,13 @@
             window.location.href = './singleProduct.html'
         }
 
-        function logout() {
+        function logout() 
+        {
             alert("Logout successful.")
             localStorage.removeItem("currentUser")
             window.location.reload()
         }
+
     </script>
 </body>
 
